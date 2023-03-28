@@ -8,3 +8,9 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.ID, 'login_form')
     REGISTER_FORM = (By.ID, 'register_form')
+
+
+class ProductPageLocators():
+    ADD_TO_BASKET = (By.CLASS_NAME, 'btn-add-to-basket')
+    PRODUCT_NAME = (By.TAG_NAME, 'h1')
+    SUCCESS_MESSAGE = (By.XPATH, "//div[@class='alertinner ']/strong")
