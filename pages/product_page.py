@@ -12,4 +12,4 @@ class ProductPage(BasePage):
         self.solve_quiz_and_get_code()
         assert self.browser.find_element(
             *ProductPageLocators.PRODUCT_NAME).text == self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE).text, "Wrong name"
-        time.sleep(5)
+        # time.sleep(5)
