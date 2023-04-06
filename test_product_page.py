@@ -1,23 +1,28 @@
 import pytest
 from faker import Faker
 
-from pages.basket_page import BasketPage
-from pages.login_page import LoginPage
-from pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
+from .pages.product_page import ProductPage
 
 fake = Faker()
+
 product_link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/'
-promo_num_list = [str(i) for i in range(
-    7)] + [pytest.param("7", marks=pytest.mark.xfail)]+[str(i) for i in range(8, 10)]
 login_link = 'https://selenium1py.pythonanywhere.com/accounts/login/'
 
 
-@pytest.mark.parametrize('promo_num', promo_num_list)
-def test_guest_can_add_product_to_basket(browser, promo_num):
-    link = f'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{promo_num}'
-    page = ProductPage(browser, url=link)
-    page.open()
-    page.add_to_basket_with_alert()
+# Example with parametrize
+
+# promo_num_list = [str(i) for i in range(
+#     7)] + [pytest.param("7", marks=pytest.mark.xfail)]+[str(i) for i in range(8, 10)]
+
+
+# @pytest.mark.parametrize('promo_num', promo_num_list)
+# def test_guest_can_add_product_to_basket(browser, promo_num):
+#     link = f'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{promo_num}'
+#     page = ProductPage(browser, url=link)
+#     page.open()
+#     page.add_to_basket_with_alert()
 
 
 @pytest.mark.product_page_for_guest
@@ -50,6 +55,9 @@ class TestGuestAddToBasketFromProductPage():
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self):
         basket_page = BasketPage(*self.page.go_to_basket())
         basket_page.basket_is_empty()
+
+    def test_guest_can_add_product_to_basket(self):
+        self.page.add_to_basket_with_alert()
 
 
 @pytest.mark.product_page_for_user
