@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators():
-    LOGIN_LINK = (By.ID, "registration_link")
+    LOGIN_LINK = (By.ID, "login_link")
     SEE_BASKET = (By.XPATH, '//a[@class = "btn btn-default"]')
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
