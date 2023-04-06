@@ -70,3 +70,7 @@ class BasePage():
         button = self.browser.find_element(*BasePageLocators.SEE_BASKET)
         button.click()
         return (self.browser, self.browser.current_url)
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(
+            *BasePageLocators.USER_ICON), "User icon is not presented!"
