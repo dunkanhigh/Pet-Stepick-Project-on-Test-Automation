@@ -49,15 +49,18 @@ class TestGuestAddToBasketFromProductPage():
     def test_guest_should_see_login_on_product_page(self):
         self.page.should_be_login_link()
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self):
         self.page.go_to_login()
 
+    @pytest.mark.need_review
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self):
         basket_page = BasketPage(*self.page.go_to_basket())
         basket_page.basket_is_empty()
 
+    @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self):
-        self.page.add_to_basket_with_alert()
+        self.page.add_to_basket()
 
 
 @pytest.mark.product_page_for_user
